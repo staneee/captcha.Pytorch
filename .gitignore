@@ -7,3 +7,6 @@
 *.json
 *.out
 *.pth
+data/**
+*.onnx
+*.csv
