@@ -4,12 +4,14 @@ from PIL import Image
 from torch.utils import data
 import numpy as np
 from torchvision import transforms as  T
-from parameters import *
 import torch as t
-
 import re
-from dataset import *
 from torch.utils.data import DataLoader
+import sys
+sys.path.append('../')
+from config.parameters import *
+from lib.dataset import *
+
 
 def get_distortion_pipline(path, num):
     p = Augmentor.Pipeline(path)
@@ -39,7 +41,8 @@ def get_rotate_pipline(path, num):
 
 if __name__ == "__main__":
     times = 2
-    path = r"C:\Users\pprp\Desktop\验证码\dataset5\train"
+    # path = r"C:\Users\pprp\Desktop\验证码\dataset5\train"
+    path = '../' + trainPath
     num = len(os.listdir(path)) * times
     p = get_distortion_pipline(path, num)
     # p = get_rotate_pipline(path, num)
