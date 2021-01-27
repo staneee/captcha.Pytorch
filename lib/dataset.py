@@ -84,8 +84,9 @@ class Captcha(data.Dataset):
     def __getitem__(self, index):
         imgPath = self.imgsPath[index]
         # print(imgPath)
-        label = imgPath.split("/")[-1].split(".")[0]
-        # print(label)
+        # label = imgPath.split("/")[-1].split(".")[0]
+        label = imgPath.replace('\\','/').split("/")[-1].split(".")[0].split('_')[0]
+
         labelTensor = t.Tensor(StrtoLabel(label))
         data = Image.open(imgPath)
         # print(data.size)
