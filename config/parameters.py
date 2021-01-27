@@ -1,6 +1,7 @@
 tensorLength = 248
 charLength = 62
 charNumber = 4
+ImageChannel = 3 
 ImageWidth = 87
 ImageHeight = 26
 
