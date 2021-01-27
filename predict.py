@@ -35,7 +35,7 @@ class Dataset4Captcha(data.Dataset):
     def __getitem__(self, index):
         imgPath = self.imgsPath[index]
         # print(imgPath)
-        label = imgPath.split("/")[-1]
+        label = imgPath.replace('\\','/').split("/")[-1]
         # labelTensor = t.Tensor(StrtoLabel(label))
         data = Image.open(imgPath)
         # print(data.size)
@@ -61,7 +61,7 @@ def predict(model, dataLoader, csv_file):
 
         y1, y2, y3, y4 = model(x)
         y1, y2, y3, y4 = y1.topk(1, dim=1)[1].view(1, 1), y2.topk(1, dim=1)[1].view(1, 1), \
-                         y3.topk(1, dim=1)[1].view(1, 1), y4.topk(1, dim=1)[1].view(1, 1)
+                         y3.topk(1, dim=1)[1].view(1, 1), y4.topk(1, dim=1)[1].view(1, 1)                        
         y = t.cat((y1, y2, y3, y4), dim=1)
         # print(x,label,y)
         decLabel = LabeltoStr([y[0][0], y[0][1], y[0][2], y[0][3]])
