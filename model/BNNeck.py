@@ -96,13 +96,26 @@ class bnneck(nn.Module):
 
     def load_model(self, weight_path):
         fileList = os.listdir("./weights/")
+
+        device = self.getDevice()
+
         # print(fileList)
         if "bnneck_new.pth" in fileList:
             name = "./weights/bnneck_new.pth"
-            self.load_state_dict(t.load(name))
+            self.load_state_dict(t.load(name, map_location = device))
             print("the latest model has been load")
         elif os.path.isfile(weight_path):
-            self.load_state_dict(t.load(weight_path))
+            self.load_state_dict(t.load(weight_path, map_location = device))
             print("load %s success!" % weight_path)
         else:
             print("%s do not exists." % weight_path)
+    
+    def getDevice(self):
+        return t.device(self.getDeviceString())
+
+    def getDeviceString(self):
+        device = 'cpu'
+        if t.cuda.is_available():
+            device = 'cuda'
+
+        return device        
