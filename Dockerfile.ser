@@ -1,0 +1,14 @@
+From python:3.8.3
+# Set the working directory to /app
+WORKDIR /app
+# ADD requirements.txt
+COPY requirements.txt /app/
+# Install any needed packages specified in requirement.txt
+RUN pip install --trusted-host mirrors.aliyun.com -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+# Make port 6000 available to the world outside this container
+EXPOSE 80
+# Define environment variable
+ENV envname=k8s
+# ADD application.py to /app
+ADD application.py /app/
+CMD ["python", "application.py"]

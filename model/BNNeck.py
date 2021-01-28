@@ -1,13 +1,12 @@
-from config.parameters import *
-import torch as t
-from torch import nn
-import torch.nn.functional as F
 import os
-from torchvision import models
-from torch.nn import init
+
 import torch
+import torch as t
+import torch.nn.functional as F
+from torch import nn
 from torchvision.models import ResNet
 from torchvision.models.resnet import BasicBlock
+
 from model.model import weights_init_kaiming, weights_init_classifier
 
 
