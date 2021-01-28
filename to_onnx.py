@@ -11,16 +11,16 @@ if __name__ == '__main__':
     modelPath = "./weights/bnneck34_968.pth"
     savePath = "./weights/test.onnx"
 
-    input_shape = (ImageChannel, ImageWidth, ImageWidth)
+    input_shape = (ImageChannel, ImageWidth, ImageHeight)
 
     model = bnneck()
-    model.eval()
-    model.train(False)
+    # model.eval()
+    # model.train(False)
     model.load_model(modelPath)
 
     dummy_input = torch.randn(1,*input_shape, device='cpu')
     input_names = ["input"]
-    output_names = ["output"]
+    output_names = ["a","b","c","d"]
 
     torch.onnx.export(model,
         dummy_input,
@@ -29,9 +29,5 @@ if __name__ == '__main__':
         opset_version=10,
         do_constant_folding=True,
         input_names=input_names, 
-        output_names=output_names,
-        dynamic_axes={
-            "input":{0:"batch_size"},
-            "output":{0:"batch_size"}
-        }
+        output_names=output_names
     )
