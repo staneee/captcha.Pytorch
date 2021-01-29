@@ -1,11 +1,9 @@
-from config.parameters import *
-import torch as t
-from torch import nn
-import torch.nn.functional as F
 import os
-from torchvision import models
+
+import torch as t
+import torch.nn.functional as F
+from torch import nn
 from torch.nn import init
-import torch
 
 
 def weights_init_classifier(m):
