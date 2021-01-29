@@ -27,23 +27,23 @@ if __name__ == '__main__':
     modelPath2 = "./weights/bnneck34_968.pth"
     dataInputPath = r"C:\Users\yihan\Desktop\captcha_server\11"
 
-    a=torch.randn([3,2,9])
-    print(a)
+    # a=torch.randn([3,2,9])
+    # print(a)
 
-    b=torch.FloatTensor([0.5,0.5,0.5])
-    if b.ndim == 1:
-        b = b.view(-1, 1, 1)
-    print(b)
-
-
-    c=a.sub_(b)
-    print(c)
-
-    d=c.div_(b)
-    print(d)
+    # b=torch.FloatTensor([0.5,0.5,0.5])
+    # if b.ndim == 1:
+    #     b = b.view(-1, 1, 1)
+    # print(b)
 
 
-    exit()
+    # c=a.sub_(b)
+    # print(c)
+
+    # d=c.div_(b)
+    # print(d)
+
+
+    # exit()
 
     # device = torch.device('cpu')
     

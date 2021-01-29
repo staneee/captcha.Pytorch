@@ -29,6 +29,7 @@ def StrtoLabel(Str):
 
 
 def LabeltoStr(Label):
+    print(Label)
     Str = ""
     for i in Label:
         if i <= 9:
